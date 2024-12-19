@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Word Count Example</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    height: 150px;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .info {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<h1>Word Count Tool</h1>
+<textarea id="textInput" placeholder="Type or paste your text here..."></textarea>
+<div class="info">
+  Word Count: <span id="wordCount">0</span>
+</div>
+
+<script>
+  const textInput = document.getElementById('textInput');
+  const wordCountEl = document.getElementById('wordCount');
+
+  function countWords(text) {
+    // Split by one or more whitespace characters and filter out empty strings
+    const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+    return words.length;
+  }
+
+  textInput.addEventListener('input', () => {
+    const text = textInput.value;
+    const count = countWords(text);
+    wordCountEl.textContent = count;
+  });
+</script>
+
+</body>
+</html>
